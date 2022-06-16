@@ -1,0 +1,14 @@
+import axios from "axios";
+
+export default const getData = async (user_id) => {
+    const {data:User} = await axios("https://jsonplaceholder.typicode.com/users/"+user_id)
+    const {data:Posts} = await axios("https://jsonplaceholder.typicode.com/posts?userId="+user_id)
+    
+    return {User,Posts};
+}
+
+//App
+import {getData} from "./app.js"
+
+let result = await getData(1,1)
+console.log(result);
